@@ -24,11 +24,7 @@ public class GameManager : MonoBehaviour
         points += points;
         return points;
     }
-    public void AddGold(int unitGold){
-        
-    }
     /// If the instance of the class is null, then set the instance to this
-    
     private void Awake() {
         if (instance == null)
         {

@@ -36,6 +36,8 @@ public class Score : MonoBehaviour
         }
         Debug.Log(scoreCount);
         scoreText.text = "" + Mathf.Round(scoreCount);
+        //le enviamos distancia para mostrar el record al GameOver
+        EndScore.distance = (int)scoreCount;
     }
 
     

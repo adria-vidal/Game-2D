@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
         
         if (other.gameObject.CompareTag("Gold"))
         {
-            gameManager.AddGold(1);
+            EndScore.gold ++;
             Destroy(other.gameObject);
         }
 
