@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     float tiempoBloqueado = 0f;
 
     public GameObject delayGameObject;
+    private GameManager gameManager;
 
 
 
@@ -92,6 +93,8 @@ public class Player : MonoBehaviour
 
             }
         }
+
+        
     }
     
     /// This function sets a boolean variable to true when a collision with a game object tagged as
@@ -116,6 +119,14 @@ public class Player : MonoBehaviour
             other.gameObject.GetComponent<Troglodyte>().hasColision = true;
 
         }
+
+        
+        if (other.gameObject.CompareTag("Gold"))
+        {
+            gameManager.AddGold(1);
+            Destroy(other.gameObject);
+        }
+
     }
 
     /// This function waits for 0.1 seconds and then sets the isTrigger property of a collider component

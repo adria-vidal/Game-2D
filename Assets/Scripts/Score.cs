@@ -12,7 +12,7 @@ public class Score : MonoBehaviour
     public float pointsPerSecond;
 
     private Player player;
-    
+
     public TMP_Text scoreText;
     public int followersCount;
 
@@ -21,17 +21,22 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         
-        scoreText = GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
         /* This code is updating the score count and displaying it on the screen. */
-        // TODO: Arreglar contador
-       //scoreCount += (Time.deltaTime + player.velocidad);
+        
+        scoreCount = player.transform.position.x;
+        if (scoreCount < 0){
+            scoreCount = 0;
+        }
         Debug.Log(scoreCount);
-        //scoreText.text = "" + Mathf.Round(scoreCount);
+        scoreText.text = "" + Mathf.Round(scoreCount);
     }
+
+    
 }
