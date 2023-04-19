@@ -6,6 +6,7 @@ public static class EndScore
 {
     public static int gold;
     public static int distance;
+    
 
     
 }
