@@ -20,7 +20,7 @@ public class Troglodyte : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<Player>();
-        offset = new Vector2(Random.Range(-3f, -1f), 0);
+        offset = new Vector2(Random.Range(-2.8f, -1f), 0);
         bc = GetComponent<BoxCollider2D>();
         gameManager = GameManager.instance;
         
@@ -43,7 +43,8 @@ public class Troglodyte : MonoBehaviour
         //StartCoroutine(DeactivateTriggerAfterDelay());
         if (isBehindPlayer)
         {
-            rb2d.velocity = new Vector2(player.GetComponent<Player>().velocidad + 0.3f, rb2d.velocity.y);
+            //troglodyte velocity
+            rb2d.velocity = new Vector2(player.GetComponent<Player>().velocidad + 0.33f, rb2d.velocity.y);
             StartCoroutine(delayMove());
         }
         else

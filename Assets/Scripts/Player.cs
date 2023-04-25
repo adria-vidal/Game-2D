@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     public GameObject delayGameObject;
     private GameManager gameManager;
 
+    public AudioSource audioSource;
+
 
 
     // Inicialización
@@ -46,7 +48,6 @@ public class Player : MonoBehaviour
         // Salto al pulsar la tecla de espacio
         if (Input.GetKeyDown(KeyCode.Space) && enSuelo)
         {
-
             Instantiate(delayGameObject, transform.position, Quaternion.identity);
             rb2d.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
             enSuelo = false;
@@ -90,7 +91,6 @@ public class Player : MonoBehaviour
             foreach (GameObject troglodyte in GameManager.instance.troglodytes)
             {
                 troglodyte.GetComponent<BoxCollider2D>().isTrigger = true;
-
             }
         }
 
@@ -124,6 +124,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Gold"))
         {
             EndScore.gold ++;
+            audioSource.Play();
             Destroy(other.gameObject);
         }
 
