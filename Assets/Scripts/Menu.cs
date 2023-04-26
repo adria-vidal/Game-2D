@@ -27,7 +27,7 @@ public class Menu : MonoBehaviour
     }
     public void LoadPlayScene()
     {
-        SceneManager.LoadScene("Inicio");
+        SceneManager.LoadScene("SampleScene");
     }
     public void LoadTutorialScene()
     {

@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
 
     public AudioSource audioSource;
+    public GameObject goldPrefab;
+
+
 
 
 
@@ -70,7 +73,7 @@ public class Player : MonoBehaviour
     }
 
     // Detects if the character is touching the ground
-    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("suelo"))
@@ -94,12 +97,26 @@ public class Player : MonoBehaviour
             }
         }
 
-        
+         if (collision.gameObject.CompareTag("dinosaur") && GameManager.instance.troglodytes.Count >= 3)
+        {
+            Destroy(collision.gameObject);
+            for (int i = 0; i < 4; i++)
+            {
+                Instantiate(goldPrefab, new Vector2(collision.gameObject.transform.position.x + i, collision.gameObject.transform.position.y),collision.gameObject.transform.rotation);
+            }
+        }
+        else if (collision.gameObject.CompareTag("dinosaur") && GameManager.instance.troglodytes.Count < 3)
+        {
+            SceneManager.LoadScene("GameOver");
+
+        }
+
+
     }
-    
+
     /// This function sets a boolean variable to true when a collision with a game object tagged as
     /// "suelo" ends.
-    
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("suelo"))
@@ -120,13 +137,15 @@ public class Player : MonoBehaviour
 
         }
 
-        
+
         if (other.gameObject.CompareTag("Gold"))
         {
-            EndScore.gold ++;
+            EndScore.gold++;
             audioSource.Play();
             Destroy(other.gameObject);
         }
+       
+
 
     }
 
